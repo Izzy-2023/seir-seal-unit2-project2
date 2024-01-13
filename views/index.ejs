@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("./partials/head.ejs") %>
+<body>
+    <%- include("./partials/header.ejs") %>
+
+    <main>
+
+        <div>
+            <% for (let i = 0; i < properties.length; ++i) { %>
+                <div class="Properties">
+                    <a href="/properties/<%= properties[i].img %>" >
+                        <h2><%= properties[i].address %> - <%= properties[i].status ? "For Sale" : "Not For Sale" %>
+                        </h2>
+                        </a>
+                        
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </main>
+      
+    
+    </body>
+    </html>

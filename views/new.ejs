@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("./partials/head.ejs") %>
+<body>
+    <%- include("./partials/header.ejs") %>
+
+    <div class="properties">
+    
+        <form action="/properties/" method="POST">
+        <fieldset>
+            <legend>Add Property</legend>
+            <label>Image</label>
+            <input class="newpage" type="text" name="image"/>
+            <label>Address</label>
+            <input class="newpage" type="text" name="address"/>
+            <label>Beds</label>
+            <input class="newpage" type="number" name="beds"/>
+            <label>Baths</label>
+            <input class="newpage" type="number" name="baths"/>
+            <label>Square Feet</label>
+            <input class="newpage" type="number" name="square-feet"/>
+            <label>Property Manager</label>
+            <input class="newpage" type="text" name="property-manager"/>
+            <label>Status</label>
+            <input type="checkbox" name="sold" id="sold">
+            <br><br>
+            <input class="submit-button" type="submit" value="ADD PROPERTY" />
+        </fieldset>
+        </form>
+    </div>
+    
+</body>
+</html>
