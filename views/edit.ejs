@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("./partials/head.ejs") %>
+<body>
+    <%- include("./partials/header.ejs") %>
+    <h1>Properties Edit Page</h1>
+
+    <div class="updatepage-container"></div>
+    <form action="/properties/<%= properties._id %>?_method=PUT" method="POST">
+        <label>Image</label>
+        <input class="editpage" type="text" name="address" value="<%= properties.img %>"/><br>
+        <label>Address</label>
+        <input class="editpage" type="text" name="address" value="<%= properties.address %>"/><br>
+        <label>Sales Price</label>
+        <input class="editpage" type="text" name="sales-price" value="<%= properties.sales-price %>"/><br>
+        <label>Beds</label>
+        <input class="editpage" type="number" name="beds" value="<%= properties.beds %>"/><br>
+        <label>Baths</label>
+        <input class="editpage" type="number" name="beds" value="<%= properties.baths %>"/><br>
+        <label>Property Manager</label>
+        <input class="editpage" type="text" name="property-manager" value="<%= properties.property-manager %>"/><br>
+        <label>Status</label>
+        <input type="checkbox" name="status" <%= properties.status ? "checked" : "" %>/><br>
+        <input class="submit-button" type="submit" value="UPDATE PROPERTY" />
+
+    </form>
+</div>
+    
+</body>
+</html>

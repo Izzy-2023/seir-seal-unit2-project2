@@ -5,12 +5,20 @@ const morgan = require("morgan")
 const methodOverride = require("method-override")
 const mongoose = require("mongoose")
 
-// get .env variables
-const {DATABASE_URL, SECRET, PORT} = process.env
+// *****************************
+// DATABASE CONNECTION
+// *****************************
+// our database connection string
+const DATABASE_URL = process.env.DATABASE_URL
 
-// database connection
+// *****************************
+// Establish our connection
+// *****************************
 mongoose.connect(DATABASE_URL)
 
+// *****************************
+// Events for when connection opens/disconnects/errors
+// *****************************
 mongoose.connection
 .on("open", () => console.log("Connected to Mongoose"))
 .on("close", () => console.log("Disconnected from Mongoose"))
@@ -97,10 +105,40 @@ app.get('/properties/new', (req, res) => {
     res.render('new.ejs', {Property})
 });
 
+// create route
+app.post("/properties", async (req, res) => {
+  try {
+    // check if the status property should be true or false
+    req.body.status = req.body.status === "on" ? true : false;
+    // create the new property
+    await Property.create(req.body);
+    // redirect the user back to the main fruits page after fruit created
+    res.redirect("/properties");
+  } catch (error) {
+    console.log("-----", error.message, "------")
+    res.status(400).send(error.message);
+  }
+});
+
+// Edit Route (Get to /properties/:id/edit)
+app.get("/properties/:id/edit", async (req, res) => {
+  try {
+    // get the id from params
+    const id = req.params.id;
+    // get the property from the db
+    const properties = await Property.findById(id);
+    //render the template
+    res.render("edit.ejs", {properties});
+  } catch (error) {
+    console.log("-----", error.message, "------");
+    res.status(400).send("error, read logs for details");
+  }
+});
+
 // ***************************************  
 // Turn on the server (the listener)
 // ***************************************
-
+const PORT = process.env.PORT
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)
 })

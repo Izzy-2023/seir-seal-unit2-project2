@@ -9,7 +9,7 @@
         <div>
             <% for (let i = 0; i < properties.length; ++i) { %>
                 <div class="Properties">
-                    <a href="/properties/<%= properties[i].img %>" >
+                    <a href="/properties/<%= properties[i]._id %>" >
                         <h2><%= properties[i].address %> - <%= properties[i].status ? "For Sale" : "Not For Sale" %>
                         </h2>
                         </a>
