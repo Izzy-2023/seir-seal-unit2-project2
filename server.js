@@ -112,7 +112,7 @@ app.post("/properties", async (req, res) => {
     req.body.status = req.body.status === "on" ? true : false;
     // create the new property
     await Property.create(req.body);
-    // redirect the user back to the main fruits page after fruit created
+    // redirect the user back to the main properties page after property created
     res.redirect("/properties");
   } catch (error) {
     console.log("-----", error.message, "------")
@@ -134,6 +134,50 @@ app.get("/properties/:id/edit", async (req, res) => {
     res.status(400).send("error, read logs for details");
   }
 });
+
+//update route
+app.put("/properties/:id", async (req, res) => {
+  try {
+
+    // check if the status property should be true or false
+    req.body.status = req.body.status === "on" ? true : false;
+    // update the property
+    await Property.findByIdAndUpdate(id, req.body, { new: true });
+    // redirect user back to main page when fruit
+    res.redirect(`/properties/${id}`);
+  } catch (error) {
+    console.log("-----", error.message, "------");
+    res.status(400).send(error.message);
+  }
+});
+
+  // The Delete Route (delete to /properties/:id)
+  app.delete("/properties/:id", async (req, res) => {
+    // get the id
+    const id = req.params.id
+    // delete the property
+    await Property.findByIdAndDelete(id)
+    // redirect to main page
+    res.redirect("/properties")
+  })
+  
+  
+    // The Show Route (Get to /animals/:id)
+  app.get("/properties/:id", async (req, res) => {
+    try{
+        // get the id from params
+        const id = req.params.id
+  
+        // find the particular animal from the database
+        const properties = await Property.findById(id)
+  
+        // render the template with the animal
+        res.render("show.ejs", {properties})
+    }catch(error){
+        console.log("-----", error.message, "------")
+        res.status(400).send("error, read logs for details")
+    }
+  })
 
 // ***************************************  
 // Turn on the server (the listener)
