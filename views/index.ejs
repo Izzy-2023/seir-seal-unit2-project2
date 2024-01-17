@@ -5,13 +5,13 @@
     <%- include("./partials/header.ejs") %>
 
     <main>
-
-        <div>
+            <div class="flex-container">
             <% for (let i = 0; i < properties.length; ++i) { %>
                 <div class="Properties">
                     <a href="/properties/<%= properties[i]._id %>" >
-                        <h2><%= properties[i].address %> - <%= properties[i].status ? "For Sale" : "Not For Sale" %>
-                        </h2>
+                        <img class="properties-img" src="<%=properties[i].img%>">
+                        <h4><%= properties[i].address %></h4>
+                        <h4><%= properties[i].status ? "For Sale" : "Not For Sale" %></h4>
                         </a>
                         
                     </div>

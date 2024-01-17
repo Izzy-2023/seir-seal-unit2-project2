@@ -5,20 +5,21 @@
     <%- include("./partials/header.ejs") %>
     <h1>Properties Edit Page</h1>
 
-    <div class="updatepage-container"></div>
+    <div class="updatepage-container"><img id="properties-img-showpage" src="<%= properties.img%>" width="400px"/></div>
     <form action="/properties/<%= properties._id %>?_method=PUT" method="POST">
-        <label>Image</label>
-        <input class="editpage" type="text" name="address" value="<%= properties.img %>"/><br>
+        
         <label>Address</label>
         <input class="editpage" type="text" name="address" value="<%= properties.address %>"/><br>
         <label>Sales Price</label>
-        <input class="editpage" type="text" name="sales-price" value="<%= properties.sales_price %>"/><br>
+        <input class="editpage" type="text" name="sales_price" value="<%= properties.sales_price %>"/><br>
         <label>Beds</label>
         <input class="editpage" type="number" name="beds" value="<%= properties.beds %>"/><br>
         <label>Baths</label>
-        <input class="editpage" type="number" name="beds" value="<%= properties.baths %>"/><br>
+        <input class="editpage" type="number" name="baths" value="<%= properties.baths %>"/><br>
+        <label>Square Feet</label>
+        <input class="editpage" type="number" name="square_feet" value="<%= properties.square_feet %>"/><br>
         <label>Property Manager</label>
-        <input class="editpage" type="text" name="property-manager" value="<%= properties.property_manager %>"/><br>
+        <input class="editpage" type="text" name="property_manager" value="<%= properties.property_manager %>"/><br>
         <label>Status</label>
         <input type="checkbox" name="status" <%= properties.status ? "checked" : "" %>/><br>
         <input class="submit-button" type="submit" value="UPDATE PROPERTY" />

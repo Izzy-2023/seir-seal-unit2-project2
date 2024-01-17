@@ -54,7 +54,7 @@ const app = express()
 app.use(morgan("dev")) //logging
 app.use(methodOverride("_method")) // override for put and delete requests from forms
 app.use(express.urlencoded({extended: true})) // parse urlencoded request bodies
-app.use(express.static("public")) // serve files from public statically
+app.use("/public", express.static("public")) // serve files from public statically
 
 // ****************************
 // ROUTES
@@ -135,21 +135,27 @@ app.get("/properties/:id/edit", async (req, res) => {
   }
 });
 
-//update route
+// UPDATE 
 app.put("/properties/:id", async (req, res) => {
-  try {
+  // check if the status property should be true or false
+  req.body.status = req.body.status === "on" ? true : false;
+    const updateProperty = {
+      img: req.body.img,
+      address: req.body.address,
+      sales_price: req.body.sales_price,
+      square_feet: req.body.square_feet,
+      beds: req.body.beds,
+      baths: req.body.baths,
+      property_manager: req.body.property_manager,
+      status: req.body.status
+      
+    };
+    // console.log(updateProperty)
+    await Property.findByIdAndUpdate(req.params.id, updateProperty, {new: false})
+    // Property[req.params.id] = updateProperty;
+    res.redirect(`/properties/${req.params.id}`);
+  });
 
-    // check if the status property should be true or false
-    req.body.status = req.body.status === "on" ? true : false;
-    // update the property
-    await Property.findByIdAndUpdate(id, req.body, { new: true });
-    // redirect user back to main page when fruit
-    res.redirect(`/properties/${id}`);
-  } catch (error) {
-    console.log("-----", error.message, "------");
-    res.status(400).send(error.message);
-  }
-});
 
   // The Delete Route (delete to /properties/:id)
   app.delete("/properties/:id", async (req, res) => {
