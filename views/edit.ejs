@@ -4,10 +4,11 @@
     <%- include("./partials/header.ejs") %>
 <body>
     
-    <h3>Properties Edit Page</h3>
-
+    
+    
     <div class="updatepage-container"><img id="properties-img-showpage" src="<%= properties.img%>" width="400px"/></div>
     <form action="/properties/<%= properties._id %>?_method=PUT" method="POST"> <br><br>
+       
         <fieldset>
         <label>Image</label>
         <input class="editpage" type="text" name="img" value="<%= properties.img %>"/><br>

@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
     <%- include("./partials/head.ejs") %>
-<body>
     <%- include("./partials/header.ejs") %>
+<body>
+
 
     <div class="showcontainer">
         <div id="info">
-            <img id="properties-img-showpage" src="<%= properties.img%>" width="300px" />
+            <h3>Properties Show Page</h3>
+            <img id="properties-img-showpage" src="<%= properties.img%>" width="300px" /><br><br>
             <p>Address: <%= properties.address %></p>
             <p>Sales Price: <%= properties.sales_price %></p>
             <p>Beds: <%= properties.beds %></p>

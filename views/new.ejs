@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
     <%- include("./partials/head.ejs") %>
-<body>
     <%- include("./partials/header.ejs") %>
+<body>
+
+    <h3>Add Property</h3>
 
     <div class="properties">
-    
         <form action="/properties/" method="POST">
         <fieldset>
-            <legend>Add Property</legend>
             <label>Image</label>
             <input class="newpage" type="text" name="img"/>
             <label>Address</label>
