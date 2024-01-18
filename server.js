@@ -168,16 +168,17 @@ app.put("/properties/:id", async (req, res) => {
   })
   
   
-    // The Show Route (Get to /animals/:id)
+    // The Show Route (Get to /properties/:id)
   app.get("/properties/:id", async (req, res) => {
+
     try{
         // get the id from params
         const id = req.params.id
   
-        // find the particular animal from the database
+        // find the particular property from the database
         const properties = await Property.findById(id)
   
-        // render the template with the animal
+        // render the template with the property
         res.render("show.ejs", {properties})
     }catch(error){
         console.log("-----", error.message, "------")

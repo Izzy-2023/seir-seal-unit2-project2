@@ -1,6 +1,6 @@
 * {
     margin: 0 auto;
-    background-color: rgb(244, 238, 188);
+    background-color: lightcyan;
   }
 
   body {
@@ -19,12 +19,18 @@
     flex-wrap: wrap;
     
   }
+  .property {
+    margin-top: 2em;
+    width: 9em;
+    height: 10em;
+    border-radius: 1em;
+    text-align: left;
+  }
 
   .Properties {
     margin-top: 2em;
     width: 9em;
     height: 10em;
- 
     border-radius: 1em;
     text-align: center;
   }
@@ -37,11 +43,9 @@
   }
 
   .showcontainer,
-  .newcontainer,
-  .updatepage-container {
+  .newcontainer {
     width: 20em;
     height: 21em;
-
     border-radius: 3em;
     text-align: center;
     margin-bottom: 1em;
@@ -57,7 +61,7 @@
     
   .newpage,
   .editpage {
-    border: 0.1em solid rgba(39, 93, 163, 0.529);
+    border: 0.5em solid rgba(39, 93, 163, 0.529);
     padding: 0.2em;
     margin: 0.2em;
   }
@@ -71,4 +75,8 @@
   #info {
     margin: 1em;
     padding-top: 1em;
+  }
+
+  input {
+    text-align: center;
   }

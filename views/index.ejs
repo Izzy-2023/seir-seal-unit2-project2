@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
     <%- include("./partials/head.ejs") %>
-<body>
     <%- include("./partials/header.ejs") %>
+<body>
 
-    <main>
             <div class="flex-container">
             <% for (let i = 0; i < properties.length; ++i) { %>
                 <div class="Properties">
                     <a href="/properties/<%= properties[i]._id %>" >
+                        <div class="property">
                         <img class="properties-img" src="<%=properties[i].img%>">
-                        <h4><%= properties[i].address %></h4>
-                        <h4><%= properties[i].status ? "For Sale" : "Not For Sale" %></h4>
-                        </a>
-                        
+                        <h5><%= properties[i].address %> - <%= properties[i].status ? "For Sale" : "Not For Sale" %></h5>
                     </div>
+                    </a>
+                    
                 </div>
             <% } %>
         </div>
-    </main>
+
       
     
     </body>
