@@ -170,7 +170,8 @@ app.put("/properties/:id", async (req, res) => {
   
     // The Show Route (Get to /properties/:id)
   app.get("/properties/:id", async (req, res) => {
-
+  // check if the status property should be true or false
+  req.body.status = req.body.status === "on" ? true : false;
     try{
         // get the id from params
         const id = req.params.id

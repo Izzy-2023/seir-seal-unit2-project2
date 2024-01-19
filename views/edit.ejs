@@ -3,9 +3,9 @@
     <%- include("./partials/head.ejs") %>
     <%- include("./partials/header.ejs") %>
 <body>
+    <br>
     
-    
-    
+    <h3>Properties Edit Page</h3>
     <div class="updatepage-container"><img id="properties-img-showpage" src="<%= properties.img%>" width="400px"/></div>
     <form action="/properties/<%= properties._id %>?_method=PUT" method="POST"> <br><br>
        
@@ -24,7 +24,7 @@
         <input class="editpage" type="number" name="square_feet" value="<%= properties.square_feet %>"/><br>
         <label>Property Manager</label>
         <input class="editpage" type="text" name="property_manager" value="<%= properties.property_manager %>"/><br>
-        <label>Sold</label>
+        <label>For Sale?</label>
         <input type="checkbox" name="status" <%= properties.status ? "checked" : "For Sale" %>/><br>
         <input class="submit-button" type="submit" value="UPDATE PROPERTY" />
     </fieldset>
